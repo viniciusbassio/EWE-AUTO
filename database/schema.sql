@@ -3,8 +3,8 @@ PRAGMA foreign_keys = ON;
 -- ==========================
 -- CLIENTES
 -- ==========================
-CREATE TABLE Clientes (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE clientes (
+    id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     telefone TEXT,
     cpf TEXT,
@@ -12,11 +12,12 @@ CREATE TABLE Clientes (
     observacoes TEXT
 );
 
+
 -- ==========================
--- VEICULOS
+-- VEÍCULOS
 -- ==========================
-CREATE TABLE Veiculos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE veiculos (
+    id_veiculo INTEGER PRIMARY KEY AUTOINCREMENT,
     cliente_id INTEGER NOT NULL,
     placa TEXT NOT NULL UNIQUE,
     marca TEXT NOT NULL,
@@ -28,24 +29,24 @@ CREATE TABLE Veiculos (
     combustivel TEXT,
 
     FOREIGN KEY(cliente_id)
-        REFERENCES Clientes(id)
+        REFERENCES clientes(id_cliente)
         ON DELETE CASCADE
 );
 
 -- ==========================
--- SERVICOS
+-- SERVIÇOS
 -- ==========================
-CREATE TABLE Servicos (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE servicos (
+    id_servico INTEGER PRIMARY KEY AUTOINCREMENT,
     descricao TEXT NOT NULL,
     valor_padrao REAL NOT NULL DEFAULT 0
 );
 
 -- ==========================
--- PECAS
+-- PEÇAS
 -- ==========================
-CREATE TABLE Pecas (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE pecas (
+    id_peca INTEGER PRIMARY KEY AUTOINCREMENT,
     descricao TEXT NOT NULL,
     marca TEXT,
     valor REAL NOT NULL DEFAULT 0
@@ -54,25 +55,19 @@ CREATE TABLE Pecas (
 -- ==========================
 -- ORDENS DE SERVIÇO
 -- ==========================
-CREATE TABLE OrdensServico (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    numero INTEGER NOT NULL UNIQUE,
-
+CREATE TABLE ordens_servico (
+    id_os INTEGER PRIMARY KEY AUTOINCREMENT,
+    numero_os INTEGER NOT NULL UNIQUE,
     cliente_id INTEGER NOT NULL,
     veiculo_id INTEGER NOT NULL,
-
     data_abertura TEXT NOT NULL,
     data_fechamento TEXT,
-
     problema_relatado TEXT NOT NULL,
     diagnostico TEXT,
-
     valor_mao_obra REAL NOT NULL DEFAULT 0,
     valor_pecas REAL NOT NULL DEFAULT 0,
     valor_total REAL NOT NULL DEFAULT 0,
-
     forma_pagamento TEXT,
-
     status TEXT NOT NULL DEFAULT 'Aberta'
         CHECK(status IN (
             'Aberta',
@@ -81,41 +76,40 @@ CREATE TABLE OrdensServico (
             'Entregue',
             'Cancelada'
         )),
-
     observacoes TEXT,
-
     FOREIGN KEY(cliente_id)
-        REFERENCES Clientes(id),
-
+        REFERENCES clientes(id_cliente)
+        ON DELETE RESTRICT,
     FOREIGN KEY(veiculo_id)
-        REFERENCES Veiculos(id)
+        REFERENCES veiculos(id_veiculo)
+        ON DELETE RESTRICT
 );
+
 
 -- ==========================
 -- ITENS DE SERVIÇO
 -- ==========================
-CREATE TABLE ItensServico (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE itens_servico (
+    id_item_servico INTEGER PRIMARY KEY AUTOINCREMENT,
     os_id INTEGER NOT NULL,
     servico_id INTEGER NOT NULL,
-
     quantidade REAL NOT NULL DEFAULT 1,
     valor_unitario REAL NOT NULL,
     valor_total REAL NOT NULL,
 
     FOREIGN KEY(os_id)
-        REFERENCES OrdensServico(id)
+        REFERENCES ordens_servico(id_os)
         ON DELETE CASCADE,
 
     FOREIGN KEY(servico_id)
-        REFERENCES Servicos(id)
+        REFERENCES servicos(id_servico)
 );
 
 -- ==========================
 -- ITENS DE PEÇAS
 -- ==========================
-CREATE TABLE ItensPeca (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE itens_peca (
+    id_item_peca INTEGER PRIMARY KEY AUTOINCREMENT,
     os_id INTEGER NOT NULL,
     peca_id INTEGER NOT NULL,
 
@@ -124,18 +118,18 @@ CREATE TABLE ItensPeca (
     valor_total REAL NOT NULL,
 
     FOREIGN KEY(os_id)
-        REFERENCES OrdensServico(id)
+        REFERENCES ordens_servico(id_os)
         ON DELETE CASCADE,
 
     FOREIGN KEY(peca_id)
-        REFERENCES Pecas(id)
+        REFERENCES pecas(id_peca)
 );
 
 -- ==========================
 -- CONFIGURAÇÕES
 -- ==========================
-CREATE TABLE Configuracoes (
-    id INTEGER PRIMARY KEY CHECK (id = 1),
+CREATE TABLE configuracoes (
+    id_configuracao INTEGER PRIMARY KEY CHECK(id_configuracao = 1),
 
     nome_oficina TEXT NOT NULL,
     cnpj TEXT,
@@ -147,8 +141,8 @@ CREATE TABLE Configuracoes (
     logo TEXT
 );
 
-INSERT INTO Configuracoes (
-    id,
+INSERT INTO configuracoes (
+    id_configuracao,
     nome_oficina
 )
 VALUES (
@@ -159,11 +153,11 @@ VALUES (
 -- ==========================
 -- ÍNDICES
 -- ==========================
-CREATE INDEX idx_cliente_nome
-ON Clientes(nome);
+CREATE INDEX idx_clientes_nome
+ON clientes(nome);
 
-CREATE INDEX idx_os_status
-ON OrdensServico(status);
+CREATE INDEX idx_ordens_servico_status
+ON ordens_servico(status);
 
-CREATE INDEX idx_os_data
-ON OrdensServico(data_abertura);
+CREATE INDEX idx_ordens_servico_data
+ON ordens_servico(data_abertura);
