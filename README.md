@@ -1,21 +1,21 @@
 # EWE Auto
 
-Sistema desktop para gerenciamento de ordens de serviço desenvolvido para uma oficina mecânica.
+Sistema desktop para gerenciamento de oficinas mecânicas desenvolvido em Python.
 
-O objetivo desta primeira versão é substituir o controle manual de ordens de serviço, permitindo o cadastro de clientes, veículos, serviços e peças, além da criação e impressão de ordens de serviço.
+O objetivo da primeira versão é substituir o controle manual de ordens de serviço, permitindo o gerenciamento de clientes, veículos, serviços, peças e ordens de serviço de forma simples, rápida e eficiente.
 
-O projeto foi desenvolvido pensando em ser uma aplicação leve, simples e eficiente, capaz de funcionar em computadores com hardware limitado.
+O projeto foi desenvolvido priorizando baixo consumo de recursos, visando funcionar em computadores com hardware limitado, comuns em pequenas oficinas.
 
 ---
 
 # Tecnologias utilizadas
 
-* Python 3.14
-* PySide6 (Interface gráfica)
-* Qt Designer (Construção das telas)
-* SQLite (Banco de dados)
-* Git (Controle de versão)
-* VS Code (Ambiente de desenvolvimento)
+- Python 3.14
+- PySide6
+- Qt Designer
+- SQLite
+- Git
+- VS Code
 
 ---
 
@@ -26,9 +26,9 @@ EWE-AUTO/
 │
 ├── assets/
 ├── config/
-├── controllers/
 ├── database/
 ├── models/
+├── repositories/
 ├── reports/
 ├── services/
 ├── ui/
@@ -44,43 +44,58 @@ EWE-AUTO/
 
 # Arquitetura
 
-O projeto segue uma organização baseada no padrão MVC, separando responsabilidades:
-
-## Models
-
-Responsável pela representação das entidades do sistema.
-
-Exemplos:
-
-* Cliente
-* Veículo
-* Serviço
-* Peça
-* Ordem de Serviço
-
----
+O projeto utiliza uma arquitetura em camadas (**Layered Architecture**) com aplicação do **Repository Pattern**, separando responsabilidades entre interface, acesso aos dados e regras de negócio.
 
 ## Views
 
-Responsável pelas interfaces gráficas desenvolvidas utilizando PySide6 e Qt Designer.
+Responsáveis pelas interfaces gráficas desenvolvidas com PySide6 e Qt Designer.
+
+Exemplos:
+
+- Tela Principal
+- Cadastro de Clientes
+- Cadastro de Veículos
 
 ---
 
-## Controllers
+## Models
 
-Responsável por intermediar as ações realizadas na interface com as regras da aplicação.
+Representam as entidades do sistema.
+
+Exemplos:
+
+- Cliente
+- Veículo
+- Serviço
+- Peça
+- Ordem de Serviço
+
+---
+
+## Repositories
+
+Responsáveis pelo acesso ao banco de dados.
+
+Centralizam todas as operações de persistência, como:
+
+- Inserção
+- Consulta
+- Atualização
+- Exclusão
 
 ---
 
 ## Services
 
-Responsável pelas regras de negócio do sistema.
+Camada destinada às regras de negócio da aplicação.
+
+Na versão atual possui pouca utilização, porém será expandida conforme o crescimento do sistema.
 
 ---
 
 ## Database
 
-Responsável pela comunicação com o banco de dados SQLite.
+Responsável pela criação da conexão SQLite e inicialização automática do banco de dados.
 
 ---
 
@@ -88,29 +103,28 @@ Responsável pela comunicação com o banco de dados SQLite.
 
 ## Estrutura inicial
 
-* [x] Criação da estrutura de pastas
-* [x] Configuração do ambiente virtual
-* [x] Configuração do projeto no VS Code
-* [x] Configuração do Git
-* [x] Criação do arquivo requirements.txt
+- [x] Estrutura do projeto
+- [x] Ambiente virtual
+- [x] Configuração do Git
+- [x] Requirements
+- [x] Organização em camadas
 
 ---
 
 ## Banco de Dados
 
-* [x] Criação do banco SQLite
-* [x] Modelagem inicial das tabelas
-* [x] Criação do schema do banco
-* [x] Configuração da conexão com banco de dados
-* [x] Inicialização automática do banco
+- [x] Modelagem inicial
+- [x] Schema SQLite
+- [x] Inicialização automática
+- [x] Conexão com banco
 
 ---
 
 ## Interface
 
-* [x] Criação da janela principal
-* [x] Integração do PySide6 com arquivos `.ui`
-* [x] Menu principal do sistema
+- [x] Janela principal
+- [x] Integração com arquivos `.ui`
+- [x] Menu principal do sistema
 
 ---
 
@@ -118,65 +132,73 @@ Responsável pela comunicação com o banco de dados SQLite.
 
 ## Clientes
 
-* [ ] Cadastro de clientes
-* [ ] Busca de clientes
-* [ ] Edição de clientes
-* [ ] Exclusão de clientes
+- [x] Cadastro de clientes
+- [x] Pesquisa de clientes
+- [x] Edição de clientes
+- [x] Exclusão de clientes
 
 ---
 
 ## Veículos
 
-* [ ] Cadastro de veículos
-* [ ] Associação entre cliente e veículo
-* [ ] Consulta de veículos cadastrados
+- [ ] Cadastro
+- [ ] Associação Cliente x Veículo
+- [ ] Pesquisa
+- [ ] Edição
+- [ ] Exclusão
 
 ---
 
 ## Serviços
 
-* [ ] Cadastro de serviços realizados pela oficina
-* [ ] Definição de valores padrão
+- [ ] Cadastro de serviços realizados pela oficina
+- [ ] Pesquisa
+- [ ] Edição
+- [ ] Exclusão
 
 ---
 
 ## Peças
 
-* [ ] Cadastro de peças utilizadas
-* [ ] Controle básico de valores
+- [ ] Cadastro de peças utilizadas
+- [ ] Pesquisa
+- [ ] Edição
+- [ ] Exclusão
 
 ---
 
 ## Ordens de Serviço
 
-* [ ] Criação de ordem de serviço
-* [ ] Seleção de cliente
-* [ ] Seleção de veículo
-* [ ] Adição de serviços
-* [ ] Adição de peças
-* [ ] Cálculo dos valores
-* [ ] Alteração de status da ordem
-* [ ] Impressão da ordem de serviço
+- [ ] Criação de ordem de serviço
+- [ ] Seleção de cliente
+- [ ] Seleção de veículo
+- [ ] Inclusão de serviços
+- [ ] Inclusão de peças
+- [ ] Cálculo automático
+- [ ] Alteração de status
+- [ ] Impressão
 
 ---
 
 ## Configurações
 
-* [ ] Cadastro dos dados da oficina
-* [ ] Informações utilizadas na impressão das ordens de serviço
+- [ ] Dados da oficina
+- [ ] Logo
+- [ ] Informações para impressão
 
 ---
 
 # Objetivos da Versão 1.0
 
-* Criar um sistema funcional para gerenciamento básico de uma oficina.
-* Reduzir o uso de controles manuais em papel.
-* Centralizar informações de clientes, veículos e serviços.
-* Criar uma base sólida para futuras evoluções.
+- Desenvolver um sistema funcional para gerenciamento básico de uma oficina.
+- Reduzir o controle manual em papel.
+- Centralizar informações de clientes e veículos.
+- Facilitar a emissão de ordens de serviço.
+- Servir como base para futuras evoluções.
 
 ---
 
-# Como executar o projeto
+# Como executar
 
 ## Criar ambiente virtual
 
@@ -186,7 +208,7 @@ python -m venv .venv
 
 ## Ativar ambiente virtual
 
-Windows PowerShell:
+PowerShell
 
 ```powershell
 .venv\Scripts\Activate.ps1
@@ -198,7 +220,7 @@ Windows PowerShell:
 pip install -r requirements.txt
 ```
 
-## Executar aplicação
+## Executar
 
 ```bash
 python main.py
@@ -208,12 +230,20 @@ python main.py
 
 # Status do Projeto
 
-🚧 Em desenvolvimento - Versão 1.0 (MVP)
+🚧 Em desenvolvimento — MVP (Versão 1.0)
+
+### Progresso atual
+
+- ✅ Estrutura do projeto
+- ✅ Banco de dados
+- ✅ CRUD de Clientes
+- 🚧 CRUD de Veículos
+- ⏳ Demais módulos em desenvolvimento
 
 ---
 
 # Autor
 
-Vinicius dos Santos Bassio
+**Vinicius dos Santos Bassio**
 
-Projeto desenvolvido para fins de estudo, portfólio e aplicação em ambiente real.
+Projeto desenvolvido para estudo, portfólio e utilização em ambiente real.
