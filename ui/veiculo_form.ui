@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>VeiculoForm</class>
+ <widget class="QDialog" name="VeiculoForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>480</height>
+   </rect>
+  </property>
+
+  <property name="windowTitle">
+   <string>Cadastro de Veículo</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+
+     <item row="0" column="0">
+      <widget class="QLabel" name="lblCliente">
+       <property name="text">
+        <string>Cliente</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="0" column="1">
+      <widget class="QComboBox" name="cmbCliente"/>
+     </item>
+
+
+     <item row="1" column="0">
+      <widget class="QLabel" name="lblPlaca">
+       <property name="text">
+        <string>Placa</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="txtPlaca"/>
+     </item>
+
+
+     <item row="2" column="0">
+      <widget class="QLabel" name="lblMarca">
+       <property name="text">
+        <string>Marca</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="txtMarca"/>
+     </item>
+
+
+     <item row="3" column="0">
+      <widget class="QLabel" name="lblModelo">
+       <property name="text">
+        <string>Modelo</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="txtModelo"/>
+     </item>
+
+
+     <item row="4" column="0">
+      <widget class="QLabel" name="lblAno">
+       <property name="text">
+        <string>Ano</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="4" column="1">
+      <widget class="QSpinBox" name="spnAno">
+       <property name="minimum">
+        <number>1900</number>
+       </property>
+       <property name="maximum">
+        <number>2100</number>
+       </property>
+      </widget>
+     </item>
+
+
+     <item row="5" column="0">
+      <widget class="QLabel" name="lblCor">
+       <property name="text">
+        <string>Cor</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="txtCor"/>
+     </item>
+
+
+     <item row="6" column="0">
+      <widget class="QLabel" name="lblKm">
+       <property name="text">
+        <string>Quilometragem</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="6" column="1">
+      <widget class="QSpinBox" name="spnKm">
+       <property name="maximum">
+        <number>9999999</number>
+       </property>
+      </widget>
+     </item>
+
+
+     <item row="7" column="0">
+      <widget class="QLabel" name="lblMotor">
+       <property name="text">
+        <string>Motor</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="txtMotor"/>
+     </item>
+
+
+     <item row="8" column="0">
+      <widget class="QLabel" name="lblCombustivel">
+       <property name="text">
+        <string>Combustível</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="8" column="1">
+      <widget class="QComboBox" name="cmbCombustivel">
+       <item>
+        <property name="text">
+         <string>Gasolina</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Etanol</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Flex</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Diesel</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>GNV</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+
+
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="btnCancelar">
+       <property name="text">
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="btnSalvar">
+       <property name="text">
+        <string>Salvar</string>
+       </property>
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+
+  </layout>
+ </widget>
+
+ <resources/>
+ <connections/>
+</ui>

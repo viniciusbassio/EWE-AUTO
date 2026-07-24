@@ -3,6 +3,7 @@ from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 
 from views.clientes_view import ClientesView
+from views.veiculos_view import VeiculosView
 
 
 class MainView(QMainWindow):
@@ -19,11 +20,32 @@ class MainView(QMainWindow):
 
         arquivo.close()
 
-        self.setCentralWidget(self.ui.centralWidget())
-        self.setWindowTitle("EWE Auto - Sistema para Oficinas")
+        self.setCentralWidget(
+            self.ui.centralWidget()
+        )
 
-        self.ui.btnClientes.clicked.connect(self.abrir_clientes)
+        self.setWindowTitle(
+            "EWE Auto - Sistema para Oficinas"
+        )
+
+        self.ui.btnClientes.clicked.connect(
+            self.abrir_clientes
+        )
+
+        self.ui.btnVeiculos.clicked.connect(
+            self.abrir_veiculos
+        )
+
 
     def abrir_clientes(self):
+
         tela = ClientesView()
+
+        tela.exec()
+
+
+    def abrir_veiculos(self):
+
+        tela = VeiculosView()
+
         tela.exec()
