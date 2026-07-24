@@ -141,11 +141,11 @@ Responsável pela criação da conexão SQLite e inicialização automática do 
 
 ## Veículos
 
-- [ ] Cadastro
-- [ ] Associação Cliente x Veículo
-- [ ] Pesquisa
-- [ ] Edição
-- [ ] Exclusão
+- [x] Cadastro de veículos
+- [x] Associação entre cliente e veículo
+- [x] Consulta de veículos cadastrados
+- [x] Edição de veículos
+- [x] Exclusão de veículos
 
 ---
 
