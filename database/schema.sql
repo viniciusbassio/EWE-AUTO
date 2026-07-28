@@ -39,7 +39,8 @@ CREATE TABLE veiculos (
 CREATE TABLE servicos (
     id_servico INTEGER PRIMARY KEY AUTOINCREMENT,
     descricao TEXT NOT NULL,
-    valor_padrao REAL NOT NULL DEFAULT 0
+    valor_padrao REAL NOT NULL DEFAULT 0,
+    observacoes TEXT
 );
 
 -- ==========================

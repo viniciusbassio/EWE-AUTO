@@ -5,6 +5,7 @@ from PySide6.QtCore import QFile
 from views.clientes_view import ClientesView
 from views.veiculos_view import VeiculosView
 from views.pecas_view import PecasView
+from views.servico_view import ServicosView
 
 class MainView(QMainWindow):
 
@@ -40,6 +41,10 @@ class MainView(QMainWindow):
             self.abrir_pecas
         )
 
+        self.ui.btnServicos.clicked.connect(
+            self.abrir_servicos
+        )
+
 
     def abrir_clientes(self):
 
@@ -56,5 +61,10 @@ class MainView(QMainWindow):
 
     def abrir_pecas(self):
         tela = PecasView()
+
+        tela.exec()
+
+    def abrir_servicos(self):
+        tela = ServicosView()
 
         tela.exec()
