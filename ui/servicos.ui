@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Servicos</class>
+
+ <widget class="QDialog" name="Servicos">
+
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+
+  <property name="windowTitle">
+   <string>Serviços</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <!-- Barra superior -->
+   <item>
+
+    <layout class="QHBoxLayout" name="layoutPesquisa">
+
+     <item>
+      <widget class="QLabel" name="lblPesquisar">
+       <property name="text">
+        <string>Pesquisar:</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QLineEdit" name="txtPesquisar">
+       <property name="placeholderText">
+        <string>Digite a descrição do serviço...</string>
+       </property>
+      </widget>
+     </item>
+
+    </layout>
+
+   </item>
+
+
+   <!-- Tabela -->
+   <item>
+
+    <widget class="QTableWidget" name="tblServicos">
+
+     <column>
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </column>
+
+     <column>
+      <property name="text">
+       <string>Descrição</string>
+      </property>
+     </column>
+
+     <column>
+      <property name="text">
+       <string>Valor Padrão</string>
+      </property>
+     </column>
+
+     <column>
+      <property name="text">
+       <string>Observações</string>
+      </property>
+     </column>
+
+    </widget>
+
+   </item>
+
+
+   <!-- Botões -->
+   <item>
+
+    <layout class="QHBoxLayout" name="layoutBotoes">
+
+     <item>
+      <widget class="QPushButton" name="btnNovo">
+       <property name="text">
+        <string>Novo</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="btnEditar">
+       <property name="text">
+        <string>Editar</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="btnExcluir">
+       <property name="text">
+        <string>Excluir</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="btnFechar">
+       <property name="text">
+        <string>Fechar</string>
+       </property>
+      </widget>
+     </item>
+
+    </layout>
+
+   </item>
+
+  </layout>
+
+ </widget>
+
+ <resources/>
+ <connections/>
+</ui>
