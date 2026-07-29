@@ -6,6 +6,8 @@ from views.clientes_view import ClientesView
 from views.veiculos_view import VeiculosView
 from views.pecas_view import PecasView
 from views.servico_view import ServicosView
+from views.ordens_servico_view import OrdensServicoView
+
 
 class MainView(QMainWindow):
 
@@ -29,6 +31,7 @@ class MainView(QMainWindow):
             "EWE Auto - Sistema para Oficinas"
         )
 
+
         self.ui.btnClientes.clicked.connect(
             self.abrir_clientes
         )
@@ -45,6 +48,10 @@ class MainView(QMainWindow):
             self.abrir_servicos
         )
 
+        self.ui.btnOrdemServico.clicked.connect(
+            self.abrir_ordens_servico
+        )
+
 
     def abrir_clientes(self):
 
@@ -59,12 +66,23 @@ class MainView(QMainWindow):
 
         tela.exec()
 
+
     def abrir_pecas(self):
+
         tela = PecasView()
 
         tela.exec()
 
+
     def abrir_servicos(self):
+
         tela = ServicosView()
+
+        tela.exec()
+
+
+    def abrir_ordens_servico(self):
+
+        tela = OrdensServicoView()
 
         tela.exec()

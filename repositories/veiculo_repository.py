@@ -227,3 +227,97 @@ class VeiculoRepository:
 
         finally:
             conexao.close()
+
+
+    def pesquisar_por_cliente(
+        self,
+        cliente_id: int,
+        texto: str
+    ) -> list[Veiculo]:
+
+        conexao = criar_conexao()
+
+        try:
+        
+            cursor = conexao.cursor()
+    
+            cursor.execute("""
+                SELECT
+                    v.id_veiculo,
+                    v.cliente_id,
+                    c.nome AS cliente,
+                    v.placa,
+                    v.marca,
+                    v.modelo,
+                    v.ano,
+                    v.cor,
+                    v.km,
+                    v.motor,
+                    v.combustivel
+                FROM veiculos v
+                INNER JOIN clientes c
+                    ON c.id_cliente = v.cliente_id
+                WHERE v.cliente_id = ?
+                AND (
+                    v.placa LIKE ?
+                    OR v.modelo LIKE ?
+                    OR v.marca LIKE ?
+                )
+                ORDER BY v.id_veiculo DESC
+            """, (
+                cliente_id,
+                f"{texto}%",
+                f"{texto}%",
+                f"{texto}%"
+            ))
+    
+    
+            linhas = cursor.fetchall()
+    
+    
+            return [
+                self._mapear_veiculo(linha)
+                for linha in linhas
+            ]
+    
+        finally:
+            conexao.close()
+
+
+    def listar_por_cliente(self, cliente_id: int) -> list[Veiculo]:
+
+        conexao = criar_conexao()
+
+        try:
+            cursor = conexao.cursor()
+
+            cursor.execute("""
+                SELECT
+                    v.id_veiculo,
+                    v.cliente_id,
+                    c.nome AS cliente,
+                    v.placa,
+                    v.marca,
+                    v.modelo,
+                    v.ano,
+                    v.cor,
+                    v.km,
+                    v.motor,
+                    v.combustivel
+                FROM veiculos v
+                INNER JOIN clientes c
+                    ON c.id_cliente = v.cliente_id
+                WHERE v.cliente_id = ?
+                ORDER BY v.id_veiculo DESC
+            """, (cliente_id,))
+
+
+            linhas = cursor.fetchall()
+
+            return [
+                self._mapear_veiculo(linha)
+                for linha in linhas
+            ]
+
+        finally:
+            conexao.close()

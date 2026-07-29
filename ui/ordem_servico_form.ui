@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+	<class>OrdemServicoForm</class>
+	<widget class="QDialog" name="OrdemServicoForm">
+		<property name="geometry">
+			<rect>
+				<x>0</x>
+				<y>0</y>
+				<width>980</width>
+				<height>760</height>
+			</rect>
+		</property>
+		<property name="windowTitle">
+			<string>Ordem de Serviço</string>
+		</property>
+		<layout class="QVBoxLayout" name="verticalLayout">
+			<item>
+				<widget class="QLabel" name="lblTitulo">
+					<property name="text">
+						<string>Ordem de Serviço</string>
+					</property>
+				</widget>
+			</item>
+			<item>
+				<layout class="QFormLayout">
+					<item row="0" column="0">
+						<widget class="QLabel" name="lblCliente">
+							<property name="text">
+								<string>Cliente *</string>
+							</property>
+						</widget>
+					</item>
+					<item row="0" column="1">
+						<layout class="QHBoxLayout">
+							<item>
+								<widget class="QLineEdit" name="txtCliente">
+									<property name="readOnly">
+										<bool>true</bool>
+									</property>
+								</widget>
+							</item>
+							<item>
+								<widget class="QPushButton" name="btnSelecionarCliente">
+									<property name="text">
+										<string>Selecionar</string>
+									</property>
+								</widget>
+							</item>
+						</layout>
+					</item>
+					<item row="1" column="0">
+						<widget class="QLabel" name="lblVeiculo">
+							<property name="text">
+								<string>Veículo *</string>
+							</property>
+						</widget>
+					</item>
+					<item row="1" column="1">
+						<layout class="QHBoxLayout">
+							<item>
+								<widget class="QLineEdit" name="txtVeiculo">
+									<property name="readOnly">
+										<bool>true</bool>
+									</property>
+								</widget>
+							</item>
+							<item>
+								<widget class="QPushButton" name="btnSelecionarVeiculo">
+									<property name="text">
+										<string>Selecionar</string>
+									</property>
+								</widget>
+							</item>
+						</layout>
+					</item>
+					<item row="2" column="0">
+						<widget class="QLabel" name="lblProblema">
+							<property name="text">
+								<string>Problema relatado</string>
+							</property>
+						</widget>
+					</item>
+					<item row="2" column="1">
+						<widget class="QTextEdit" name="txtProblema"/>
+					</item>
+					<item row="3" column="0">
+						<widget class="QLabel" name="lblDiagnostico">
+							<property name="text">
+								<string>Diagnóstico</string>
+							</property>
+						</widget>
+					</item>
+					<item row="3" column="1">
+						<widget class="QTextEdit" name="txtDiagnostico"/>
+					</item>
+				</layout>
+			</item>
+			<item>
+				<widget class="QTabWidget" name="tabs">
+					<widget class="QWidget" name="tabServicos">
+						<attribute name="title">
+							<string>Serviços</string>
+						</attribute>
+						<layout class="QVBoxLayout">
+							<item>
+								<layout class="QHBoxLayout">
+									<item>
+										<widget class="QPushButton" name="btnAdicionarServico">
+											<property name="text">
+												<string>Adicionar Serviço</string>
+											</property>
+										</widget>
+									</item>
+									<item>
+										<widget class="QPushButton" name="btnRemoverServico">
+											<property name="text">
+												<string>Remover Serviço</string>
+											</property>
+										</widget>
+									</item>
+								</layout>
+							</item>
+							<item>
+								<widget class="QTableWidget" name="tblServicos">
+									<column>
+										<property name="text">
+											<string>Descrição</string>
+										</property>
+									</column>
+									<column>
+										<property name="text">
+											<string>Qtd.</string>
+										</property>
+									</column>
+									<column>
+										<property name="text">
+											<string>Valor Unit.</string>
+										</property>
+									</column>
+									<column>
+										<property name="text">
+											<string>Total</string>
+										</property>
+									</column>
+								</widget>
+							</item>
+						</layout>
+					</widget>
+					<widget class="QWidget" name="tabPecas">
+						<attribute name="title">
+							<string>Peças</string>
+						</attribute>
+						<layout class="QVBoxLayout">
+							<item>
+								<layout class="QHBoxLayout">
+									<item>
+										<widget class="QPushButton" name="btnAdicionarPeca">
+											<property name="text">
+												<string>Adicionar Peça</string>
+											</property>
+										</widget>
+									</item>
+									<item>
+										<widget class="QPushButton" name="btnRemoverPeca">
+											<property name="text">
+												<string>Remover Peça</string>
+											</property>
+										</widget>
+									</item>
+								</layout>
+							</item>
+							<item>
+								<widget class="QTableWidget" name="tblPecas">
+									<column>
+										<property name="text">
+											<string>Descrição</string>
+										</property>
+									</column>
+									<column>
+										<property name="text">
+											<string>Qtd.</string>
+										</property>
+									</column>
+									<column>
+										<property name="text">
+											<string>Valor Unit.</string>
+										</property>
+									</column>
+									<column>
+										<property name="text">
+											<string>Total</string>
+										</property>
+									</column>
+								</widget>
+							</item>
+						</layout>
+					</widget>
+				</widget>
+			</item>
+			<item>
+				<layout class="QFormLayout">
+					<item row="0" column="0">
+						<widget class="QLabel" name="lblStatus">
+							<property name="text">
+								<string>Status</string>
+							</property>
+						</widget>
+					</item>
+					<item row="0" column="1">
+						<widget class="QComboBox" name="cmbStatus"/>
+					</item>
+					<item row="1" column="0">
+						<widget class="QLabel" name="lblPagamento">
+							<property name="text">
+								<string>Pagamento</string>
+							</property>
+						</widget>
+					</item>
+					<item row="1" column="1">
+						<widget class="QComboBox" name="cmbPagamento"/>
+					</item>
+				</layout>
+			</item>
+			<item>
+				<layout class="QGridLayout">
+					<item row="0" column="0">
+						<widget class="QLabel" name="lblTxtServ">
+							<property name="text">
+								<string>Serviços:</string>
+							</property>
+						</widget>
+					</item>
+					<item row="0" column="1">
+						<widget class="QLabel" name="lblValorServicos">
+							<property name="text">
+								<string>R$ 0,00</string>
+							</property>
+						</widget>
+					</item>
+					<item row="1" column="0">
+						<widget class="QLabel" name="lblTxtPec">
+							<property name="text">
+								<string>Peças:</string>
+							</property>
+						</widget>
+					</item>
+					<item row="1" column="1">
+						<widget class="QLabel" name="lblValorPecas">
+							<property name="text">
+								<string>R$ 0,00</string>
+							</property>
+						</widget>
+					</item>
+					<item row="2" column="0">
+						<widget class="QLabel" name="lblTxtTotal">
+							<property name="text">
+								<string>Total:</string>
+							</property>
+						</widget>
+					</item>
+					<item row="2" column="1">
+						<widget class="QLabel" name="lblValorTotal">
+							<property name="text">
+								<string>R$ 0,00</string>
+							</property>
+						</widget>
+					</item>
+				</layout>
+			</item>
+			<item>
+				<layout class="QHBoxLayout">
+					<item>
+						<spacer name="sp"/>
+					</item>
+					<item>
+						<widget class="QPushButton" name="btnCancelar">
+							<property name="text">
+								<string>Cancelar</string>
+							</property>
+						</widget>
+					</item>
+					<item>
+						<widget class="QPushButton" name="btnSalvar">
+							<property name="text">
+								<string>Salvar</string>
+							</property>
+						</widget>
+					</item>
+				</layout>
+			</item>
+		</layout>
+	</widget>
+	<resources/>
+	<connections/>
+</ui>
