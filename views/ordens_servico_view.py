@@ -1,3 +1,4 @@
+import os
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 from PySide6.QtWidgets import (
@@ -9,7 +10,14 @@ from PySide6.QtWidgets import (
 
 from repositories.ordem_servico_repository import OrdemServicoRepository
 from views.ordem_servico_form_view import OrdemServicoFormView
-
+from reports.ordem_servico_pdf import OrdemServicoPDF
+from repositories.cliente_repository import ClienteRepository
+from repositories.veiculo_repository import VeiculoRepository
+from repositories.item_servico_repository import ItemServicoRepository
+from repositories.item_peca_repository import ItemPecaRepository
+from repositories.servico_repository import ServicoRepository
+from repositories.peca_repository import PecaRepository
+from repositories.configuracao_repository import ConfiguracaoRepository
 
 class OrdensServicoView:
 
@@ -24,12 +32,17 @@ class OrdensServicoView:
 
         arquivo.close()
 
-
         self.repository = OrdemServicoRepository()
-
+        self.cliente_repository = ClienteRepository()
+        self.veiculo_repository = VeiculoRepository()
+        self.item_servico_repository = ItemServicoRepository()
+        self.item_peca_repository = ItemPecaRepository()
+        self.servico_repository = ServicoRepository()
+        self.peca_repository = PecaRepository()
+        self.gerador_pdf = OrdemServicoPDF()
+        self.configuracao_repository = ConfiguracaoRepository()
 
         self.configurar_tabela()
-
 
         self.janela.btnFechar.clicked.connect(
             self.janela.close
@@ -45,7 +58,9 @@ class OrdensServicoView:
             self.editar_ordem
         )
 
-
+        self.janela.btnImprimir.clicked.connect(
+            self.imprimir
+        )
         self.janela.btnExcluir.clicked.connect(
             self.excluir_ordem
         )
@@ -324,9 +339,134 @@ class OrdensServicoView:
 
 
             self.carregar_ordens()
+    
+    def imprimir(self):
+        id_os = self.obter_id_selecionado()
 
+        if id_os is None:
+            QMessageBox.warning(
+                self.janela,
+                "Atenção",
+                "Selecione uma ordem de serviço."
+            )
+            return
 
+        try:
+            ordem = self.repository.buscar_por_id(
+                id_os
+            )
+
+            if ordem is None:
+                QMessageBox.warning(
+                    self.janela,
+                    "Atenção",
+                    "A ordem de serviço não foi encontrada."
+                )
+                return
+
+            cliente = self.cliente_repository.buscar_por_id(
+                ordem.cliente_id
+            )
+
+            veiculo = self.veiculo_repository.buscar_por_id(
+                ordem.veiculo_id
+            )
+
+            if cliente is None:
+                QMessageBox.warning(
+                    self.janela,
+                    "Atenção",
+                    "Não foi possível carregar o cliente da OS."
+                )
+                return
+
+            if veiculo is None:
+                QMessageBox.warning(
+                    self.janela,
+                    "Atenção",
+                    "Não foi possível carregar o veículo da OS."
+                )
+                return
+
+            configuracao = (
+                self.configuracao_repository.buscar()
+            )
+
+            if configuracao is None:
+                QMessageBox.warning(
+                    self.janela,
+                    "Atenção",
+                    (
+                        "Os dados da oficina ainda não foram "
+                        "configurados."
+                    )
+                )
+                return
+
+            servicos = []
+
+            itens_servico = (
+                self.item_servico_repository
+                .listar_por_os(id_os)
+            )
+
+            for item in itens_servico:
+                servico = (
+                    self.servico_repository
+                    .buscar_por_id(item.servico_id)
+                )
+
+                if servico:
+                    servicos.append({
+                        "servico": servico,
+                        "quantidade": item.quantidade,
+                        "valor_unitario": item.valor_unitario,
+                        "valor_total": item.valor_total
+                    })
+
+            pecas = []
+
+            itens_peca = (
+                self.item_peca_repository
+                .listar_por_os(id_os)
+            )
+
+            for item in itens_peca:
+                peca = (
+                    self.peca_repository
+                    .buscar_por_id(item.peca_id)
+                )
+
+                if peca:
+                    pecas.append({
+                        "peca": peca,
+                        "quantidade": item.quantidade,
+                        "valor_unitario": item.valor_unitario,
+                        "valor_total": item.valor_total
+                    })
+
+            caminho_pdf = self.gerador_pdf.gerar(
+                ordem=ordem,
+                cliente=cliente,
+                veiculo=veiculo,
+                servicos=servicos,
+                pecas=pecas,
+                configuracao=configuracao
+            )
+
+            os.startfile(
+                str(caminho_pdf)
+            )
+
+        except Exception as erro:
+            QMessageBox.critical(
+                self.janela,
+                "Erro",
+                (
+                    "Não foi possível gerar o PDF da "
+                    f"ordem de serviço.\n\n{erro}"
+                )
+            )
 
     def exec(self):
-
-        self.janela.exec()
+        return self.janela.exec()
