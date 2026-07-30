@@ -1,6 +1,6 @@
 import shutil
 from pathlib import Path
-
+from utils.recursos import caminho_recurso
 from PySide6.QtCore import QFile
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import (
@@ -17,7 +17,7 @@ class ConfiguracoesView:
     def __init__(self):
         loader = QUiLoader()
 
-        arquivo = QFile("ui/configuracoes.ui")
+        arquivo = QFile(caminho_recurso("ui/configuracoes.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.janela = loader.load(arquivo)

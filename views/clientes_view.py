@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QTableWidgetItem, QHeaderView
 from PySide6.QtWidgets import QMessageBox
 from repositories.cliente_repository import ClienteRepository
 from views.cliente_form_view import ClienteFormView
-
+from utils.recursos import caminho_recurso
 
 class ClientesView:
 
@@ -12,7 +12,7 @@ class ClientesView:
 
         loader = QUiLoader()
 
-        arquivo = QFile("ui/clientes.ui")
+        arquivo = QFile(caminho_recurso("ui/clientes.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.janela = loader.load(arquivo)

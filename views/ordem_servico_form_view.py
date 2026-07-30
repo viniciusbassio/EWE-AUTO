@@ -20,6 +20,7 @@ from repositories.cliente_repository import ClienteRepository
 from repositories.veiculo_repository import VeiculoRepository
 from repositories.servico_repository import ServicoRepository
 from repositories.peca_repository import PecaRepository
+from utils.recursos import caminho_recurso
 
 class OrdemServicoFormView(QDialog):
 
@@ -30,7 +31,7 @@ class OrdemServicoFormView(QDialog):
         loader = QUiLoader()
 
         arquivo = QFile(
-            "ui/ordem_servico_form.ui"
+            caminho_recurso("ui/ordem_servico_form.ui")
         )
 
         arquivo.open(QFile.ReadOnly)

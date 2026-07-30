@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMessageBox
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
-
+from utils.recursos import caminho_recurso
 from models.cliente import Cliente
 from repositories.cliente_repository import ClienteRepository
 
@@ -14,7 +14,7 @@ class ClienteFormView:
 
         loader = QUiLoader()
 
-        arquivo = QFile("ui/cliente_form.ui")
+        arquivo = QFile(caminho_recurso("ui/cliente_form.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.janela = loader.load(arquivo)

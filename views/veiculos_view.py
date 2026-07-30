@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
     QHeaderView,
     QMessageBox
 )
-
+from utils.recursos import caminho_recurso
 from repositories.veiculo_repository import VeiculoRepository
 from views.veiculo_form_view import VeiculoFormView
 
@@ -16,7 +16,7 @@ class VeiculosView:
 
         loader = QUiLoader()
 
-        arquivo = QFile("ui/veiculos.ui")
+        arquivo = QFile(caminho_recurso("ui/veiculos.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.janela = loader.load(arquivo)

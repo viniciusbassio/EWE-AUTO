@@ -5,7 +5,7 @@ from PySide6.QtWidgets import (
     QHeaderView,
     QMessageBox
 )
-
+from utils.recursos import caminho_recurso
 from repositories.peca_repository import PecaRepository
 from views.peca_form_view import PecaFormView
 
@@ -16,7 +16,7 @@ class PecasView:
 
         loader = QUiLoader()
 
-        arquivo = QFile("ui/pecas.ui")
+        arquivo = QFile(caminho_recurso("ui/pecas.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.janela = loader.load(arquivo)

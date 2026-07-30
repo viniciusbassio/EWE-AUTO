@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QAbstractItemView
 )
-
+from utils.recursos import caminho_recurso
 from repositories.servico_repository import ServicoRepository
 
 
@@ -29,7 +29,7 @@ class SelecionarServicoView(QDialog):
 
     def carregar_ui(self):
         loader = QUiLoader()
-        arquivo = QFile("ui/selecionar_servico.ui")
+        arquivo = QFile(caminho_recurso("ui/selecionar_servico.ui"))
 
         if not arquivo.open(QFile.ReadOnly):
             raise RuntimeError(
