@@ -1,19 +1,21 @@
-# EWE Auto
+# EWE-AUTO
 
 Sistema desktop para gerenciamento de oficinas mecânicas desenvolvido em Python.
 
-O objetivo da primeira versão é substituir o controle manual de ordens de serviço, permitindo o gerenciamento de clientes, veículos, serviços, peças e ordens de serviço de forma simples, rápida e eficiente.
+O EWE-AUTO foi desenvolvido para informatizar pequenas oficinas mecânicas, substituindo o controle manual em papel por um sistema simples, rápido e de baixo consumo de recursos.
 
-O projeto foi desenvolvido priorizando baixo consumo de recursos, visando funcionar em computadores com hardware limitado, comuns em pequenas oficinas.
+A aplicação permite gerenciar clientes, veículos, peças, serviços e ordens de serviço, além de gerar e imprimir documentos em PDF.
 
 ---
 
 # Tecnologias utilizadas
 
-- Python 3.14
+- Python
 - PySide6
 - Qt Designer
 - SQLite
+- ReportLab
+- PyInstaller
 - Git
 - VS Code
 
@@ -44,169 +46,111 @@ EWE-AUTO/
 
 # Arquitetura
 
-O projeto utiliza uma arquitetura em camadas (**Layered Architecture**) com aplicação do **Repository Pattern**, separando responsabilidades entre interface, acesso aos dados e regras de negócio.
+O projeto utiliza uma arquitetura em camadas (Layered Architecture) com aplicação do Repository Pattern.
 
-## Views
+As responsabilidades são separadas entre:
 
-Responsáveis pelas interfaces gráficas desenvolvidas com PySide6 e Qt Designer.
-
-Exemplos:
-
-- Tela Principal
-- Cadastro de Clientes
-- Cadastro de Veículos
+- Interface gráfica (Views)
+- Modelos de domínio (Models)
+- Persistência de dados (Repositories)
+- Regras de negócio (Services)
+- Inicialização do banco (Database)
 
 ---
 
-## Models
-
-Representam as entidades do sistema.
-
-Exemplos:
-
-- Cliente
-- Veículo
-- Serviço
-- Peça
-- Ordem de Serviço
-
----
-
-## Repositories
-
-Responsáveis pelo acesso ao banco de dados.
-
-Centralizam todas as operações de persistência, como:
-
-- Inserção
-- Consulta
-- Atualização
-- Exclusão
-
----
-
-## Services
-
-Camada destinada às regras de negócio da aplicação.
-
-Na versão atual possui pouca utilização, porém será expandida conforme o crescimento do sistema.
-
----
-
-## Database
-
-Responsável pela criação da conexão SQLite e inicialização automática do banco de dados.
-
----
-
-# Funcionalidades da Versão 1.0
-
-## Estrutura inicial
-
-- [x] Estrutura do projeto
-- [x] Ambiente virtual
-- [x] Configuração do Git
-- [x] Requirements
-- [x] Organização em camadas
-
----
-
-## Banco de Dados
-
-- [x] Modelagem inicial
-- [x] Schema SQLite
-- [x] Inicialização automática
-- [x] Conexão com banco
-
----
-
-## Interface
-
-- [x] Janela principal
-- [x] Integração com arquivos `.ui`
-- [x] Menu principal do sistema
-
----
-
-# Módulos da Versão 1.0
+# Funcionalidades
 
 ## Clientes
 
-- [x] Cadastro de clientes
-- [x] Pesquisa de clientes
-- [x] Edição de clientes
-- [x] Exclusão de clientes
+- ✅ Cadastro
+- ✅ Pesquisa
+- ✅ Alteração
+- ✅ Exclusão
 
 ---
 
 ## Veículos
 
-- [x] Cadastro de veículos
-- [x] Associação entre cliente e veículo
-- [x] Consulta de veículos cadastrados
-- [x] Edição de veículos
-- [x] Exclusão de veículos
+- ✅ Cadastro
+- ✅ Associação ao cliente
+- ✅ Pesquisa
+- ✅ Alteração
+- ✅ Exclusão
 
 ---
 
 ## Serviços
 
-- [ ] Cadastro de serviços realizados pela oficina
-- [ ] Pesquisa
-- [ ] Edição
-- [ ] Exclusão
+- ✅ Cadastro
+- ✅ Pesquisa
+- ✅ Alteração
+- ✅ Exclusão
 
 ---
 
 ## Peças
 
-- [ ] Cadastro de peças utilizadas
-- [ ] Pesquisa
-- [ ] Edição
-- [ ] Exclusão
+- ✅ Cadastro
+- ✅ Pesquisa
+- ✅ Alteração
+- ✅ Exclusão
 
 ---
 
 ## Ordens de Serviço
 
-- [ ] Criação de ordem de serviço
-- [ ] Seleção de cliente
-- [ ] Seleção de veículo
-- [ ] Inclusão de serviços
-- [ ] Inclusão de peças
-- [ ] Cálculo automático
-- [ ] Alteração de status
-- [ ] Impressão
+- ✅ Criação
+- ✅ Numeração automática
+- ✅ Associação Cliente / Veículo
+- ✅ Inclusão de peças
+- ✅ Inclusão de serviços
+- ✅ Cálculo automático dos valores
+- ✅ Alteração de status
+- ✅ Geração de PDF
+- ✅ Impressão
 
 ---
 
 ## Configurações
 
-- [ ] Dados da oficina
-- [ ] Logo
-- [ ] Informações para impressão
+- ✅ Dados da oficina
+- ✅ Logo da empresa
+- ✅ Informações utilizadas nos PDFs
 
 ---
 
-# Objetivos da Versão 1.0
+# Banco de Dados
 
-- Desenvolver um sistema funcional para gerenciamento básico de uma oficina.
-- Reduzir o controle manual em papel.
-- Centralizar informações de clientes e veículos.
-- Facilitar a emissão de ordens de serviço.
-- Servir como base para futuras evoluções.
+- SQLite
+- Criação automática do banco
+- Inicialização automática do Schema
+
+---
+
+# Distribuição
+
+O sistema pode ser distribuído através de executável gerado pelo PyInstaller, não sendo necessária a instalação do Python na máquina do cliente.
+
+---
+
+# Compatibilidade
+
+- Windows 10
+- Windows 11
+
+> Compatibilidade com Windows 7 em processo de validação.
 
 ---
 
 # Como executar
 
-## Criar ambiente virtual
+## Ambiente virtual
 
 ```bash
 python -m venv .venv
 ```
 
-## Ativar ambiente virtual
+### Ativar
 
 PowerShell
 
@@ -214,13 +158,13 @@ PowerShell
 .venv\Scripts\Activate.ps1
 ```
 
-## Instalar dependências
+### Instalar dependências
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Executar
+### Executar
 
 ```bash
 python main.py
@@ -228,17 +172,23 @@ python main.py
 
 ---
 
+# Roadmap
+
+## v1.1
+
+- Backup automático
+- Dashboard
+- Controle de estoque
+- Relatórios
+- Pesquisa global
+
+---
+
 # Status do Projeto
 
-🚧 Em desenvolvimento — MVP (Versão 1.0)
+✅ **Versão 1.0.0 concluída**
 
-### Progresso atual
-
-- ✅ Estrutura do projeto
-- ✅ Banco de dados
-- ✅ CRUD de Clientes
-- 🚧 CRUD de Veículos
-- ⏳ Demais módulos em desenvolvimento
+Sistema funcional, utilizado em ambiente real e em evolução contínua.
 
 ---
 
