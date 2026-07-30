@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
-
+from utils.recursos import caminho_recurso
 from views.clientes_view import ClientesView
 from views.veiculos_view import VeiculosView
 from views.pecas_view import PecasView
@@ -16,7 +16,7 @@ class MainView(QMainWindow):
 
         loader = QUiLoader()
 
-        arquivo = QFile("ui/main_window.ui")
+        arquivo = QFile(caminho_recurso("ui/main_window.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.ui = loader.load(arquivo, self)

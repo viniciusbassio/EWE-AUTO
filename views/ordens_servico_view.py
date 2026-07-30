@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QAbstractItemView
 )
-
+from utils.recursos import caminho_recurso
 from repositories.ordem_servico_repository import OrdemServicoRepository
 from views.ordem_servico_form_view import OrdemServicoFormView
 from reports.ordem_servico_pdf import OrdemServicoPDF
@@ -25,7 +25,7 @@ class OrdensServicoView:
 
         loader = QUiLoader()
 
-        arquivo = QFile("ui/ordens_servico.ui")
+        arquivo = QFile(caminho_recurso("ui/ordens_servico.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.janela = loader.load(arquivo)

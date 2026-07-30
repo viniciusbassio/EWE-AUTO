@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QAbstractItemView
 )
-
+from utils.recursos import caminho_recurso
 from repositories.cliente_repository import ClienteRepository
 
 
@@ -27,7 +27,7 @@ class SelecionarClienteView(QDialog):
 
     def carregar_ui(self):
         loader = QUiLoader()
-        arquivo = QFile("ui/selecionar_cliente.ui")
+        arquivo = QFile(caminho_recurso("ui/selecionar_cliente.ui"))
 
         if not arquivo.open(QFile.ReadOnly):
             raise RuntimeError(

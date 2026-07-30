@@ -1,7 +1,7 @@
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtCore import QFile
 from PySide6.QtWidgets import QMessageBox
-
+from utils.recursos import caminho_recurso
 from models.servico import Servico
 from repositories.servico_repository import ServicoRepository
 
@@ -12,7 +12,7 @@ class ServicoFormView:
 
         loader = QUiLoader()
 
-        arquivo = QFile("ui/servico_form.ui")
+        arquivo = QFile(caminho_recurso("ui/servico_form.ui"))
         arquivo.open(QFile.ReadOnly)
 
         self.janela = loader.load(arquivo)

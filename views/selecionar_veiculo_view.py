@@ -7,7 +7,7 @@ from PySide6.QtWidgets import (
     QMessageBox,
     QAbstractItemView
 )
-
+from utils.recursos import caminho_recurso
 from repositories.veiculo_repository import VeiculoRepository
 
 
@@ -28,7 +28,7 @@ class SelecionarVeiculoView(QDialog):
 
     def carregar_ui(self):
         loader = QUiLoader()
-        arquivo = QFile("ui/selecionar_veiculo.ui")
+        arquivo = QFile(caminho_recurso("ui/selecionar_veiculo.ui"))
 
         if not arquivo.open(QFile.ReadOnly):
             raise RuntimeError(
