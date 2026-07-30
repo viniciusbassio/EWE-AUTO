@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Configuracoes</class>
+
+ <widget class="QDialog" name="Configuracoes">
+
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>520</height>
+   </rect>
+  </property>
+
+  <property name="windowTitle">
+   <string>Configurações da Oficina</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="verticalLayout">
+
+   <item>
+    <widget class="QLabel" name="lblTitulo">
+     <property name="text">
+      <string>Dados da oficina</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 18px; font-weight: bold;</string>
+     </property>
+    </widget>
+   </item>
+
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+
+     <item row="0" column="0">
+      <widget class="QLabel" name="lblNomeOficina">
+       <property name="text">
+        <string>Nome da oficina *</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="txtNomeOficina"/>
+     </item>
+
+     <item row="1" column="0">
+      <widget class="QLabel" name="lblCnpj">
+       <property name="text">
+        <string>CNPJ</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="txtCnpj"/>
+     </item>
+
+     <item row="2" column="0">
+      <widget class="QLabel" name="lblTelefone">
+       <property name="text">
+        <string>Telefone</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="txtTelefone"/>
+     </item>
+
+     <item row="3" column="0">
+      <widget class="QLabel" name="lblEmail">
+       <property name="text">
+        <string>E-mail</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="txtEmail"/>
+     </item>
+
+     <item row="4" column="0">
+      <widget class="QLabel" name="lblEndereco">
+       <property name="text">
+        <string>Endereço</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="txtEndereco"/>
+     </item>
+
+     <item row="5" column="0">
+      <widget class="QLabel" name="lblCidade">
+       <property name="text">
+        <string>Cidade</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="txtCidade"/>
+     </item>
+
+     <item row="6" column="0">
+      <widget class="QLabel" name="lblEstado">
+       <property name="text">
+        <string>Estado</string>
+       </property>
+      </widget>
+     </item>
+
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="txtEstado">
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="placeholderText">
+        <string>SP</string>
+       </property>
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+
+   <item>
+    <widget class="QGroupBox" name="grpLogo">
+     <property name="title">
+      <string>Logo da oficina</string>
+     </property>
+
+     <layout class="QHBoxLayout" name="layoutLogo">
+
+      <item>
+       <widget class="QLineEdit" name="txtLogo">
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+
+      <item>
+       <widget class="QPushButton" name="btnSelecionarLogo">
+        <property name="text">
+         <string>Selecionar imagem</string>
+        </property>
+       </widget>
+      </item>
+
+     </layout>
+    </widget>
+   </item>
+
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+
+   <item>
+    <layout class="QHBoxLayout" name="layoutBotoes">
+
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="btnSalvar">
+       <property name="text">
+        <string>Salvar</string>
+       </property>
+      </widget>
+     </item>
+
+     <item>
+      <widget class="QPushButton" name="btnCancelar">
+       <property name="text">
+        <string>Cancelar</string>
+       </property>
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+
+  </layout>
+ </widget>
+
+ <resources/>
+ <connections/>
+</ui>

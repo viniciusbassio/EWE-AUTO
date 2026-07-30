@@ -7,7 +7,7 @@ from views.veiculos_view import VeiculosView
 from views.pecas_view import PecasView
 from views.servico_view import ServicosView
 from views.ordens_servico_view import OrdensServicoView
-
+from views.configuracoes_view import ConfiguracoesView
 
 class MainView(QMainWindow):
 
@@ -51,6 +51,9 @@ class MainView(QMainWindow):
         self.ui.btnOrdemServico.clicked.connect(
             self.abrir_ordens_servico
         )
+        self.ui.btnConfiguracoes.clicked.connect(
+            self.abrir_configuracoes
+        )
 
 
     def abrir_clientes(self):
@@ -86,3 +89,7 @@ class MainView(QMainWindow):
         tela = OrdensServicoView()
 
         tela.exec()
+
+    def abrir_configuracoes(self):
+        self.configuracoes_view = ConfiguracoesView()
+        self.configuracoes_view.exec()
