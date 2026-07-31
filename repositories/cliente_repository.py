@@ -1,6 +1,6 @@
 from database.conexao import criar_conexao
 from models.cliente import Cliente
-
+from typing import List, Optional
 
 class ClienteRepository:
 
@@ -47,7 +47,7 @@ class ClienteRepository:
             conexao.close()
 
 
-    def listar(self) -> list[Cliente]:
+    def listar(self) -> List[Cliente]:
 
         conexao = criar_conexao()
 
@@ -77,7 +77,7 @@ class ClienteRepository:
             conexao.close()
 
 
-    def pesquisar(self, texto: str) -> list[Cliente]:
+    def pesquisar(self, texto: str) -> List[Cliente]:
 
         conexao = criar_conexao()
 
@@ -108,7 +108,7 @@ class ClienteRepository:
             conexao.close()
 
 
-    def buscar_por_id(self, id_cliente: int) -> Cliente | None:
+    def buscar_por_id(self, id_cliente: int) -> Optional[Cliente]:
 
         conexao = criar_conexao()
 

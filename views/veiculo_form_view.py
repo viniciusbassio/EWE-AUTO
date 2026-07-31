@@ -1,11 +1,11 @@
-from PySide6.QtWidgets import QMessageBox
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
+from PySide2.QtWidgets import QMessageBox
+from PySide2.QtUiTools import QUiLoader
+from PySide2.QtCore import QFile
 from utils.recursos import caminho_recurso
 from models.veiculo import Veiculo
 from repositories.veiculo_repository import VeiculoRepository
 from repositories.cliente_repository import ClienteRepository
-
+import sqlite3
 
 class VeiculoFormView:
 
@@ -107,10 +107,8 @@ class VeiculoFormView:
 
         cliente_id = self.janela.cmbCliente.currentData()
 
-        placa = self.janela.txtPlaca.text().strip()
-
+        placa = self.janela.txtPlaca.text().strip().upper()
         marca = self.janela.txtMarca.text().strip()
-
         modelo = self.janela.txtModelo.text().strip()
 
         if not placa:
@@ -143,56 +141,70 @@ class VeiculoFormView:
 
             return
 
+        try:
 
-        if self.veiculo:
+            if self.veiculo:
 
-            self.veiculo.cliente_id = cliente_id
-            self.veiculo.placa = placa
-            self.veiculo.marca = marca
-            self.veiculo.modelo = modelo
-            self.veiculo.ano = self.janela.spnAno.value()
-            self.veiculo.cor = self.janela.txtCor.text().strip()
-            self.veiculo.km = self.janela.spnKm.value()
-            self.veiculo.motor = self.janela.txtMotor.text().strip()
-            self.veiculo.combustivel = (
-                self.janela.cmbCombustivel.currentText()
-            )
+                self.veiculo.cliente_id = cliente_id
+                self.veiculo.placa = placa
+                self.veiculo.marca = marca
+                self.veiculo.modelo = modelo
+                self.veiculo.ano = self.janela.spnAno.value()
+                self.veiculo.cor = self.janela.txtCor.text().strip()
+                self.veiculo.km = self.janela.spnKm.value()
+                self.veiculo.motor = self.janela.txtMotor.text().strip()
+                self.veiculo.combustivel = (
+                    self.janela.cmbCombustivel.currentText()
+                )
 
-            self.repository.atualizar(
-                self.veiculo
-            )
+                self.repository.atualizar(
+                    self.veiculo
+                )
 
-            QMessageBox.information(
-                self.janela,
-                "Sucesso",
-                "Veículo atualizado com sucesso!"
-            )
+                QMessageBox.information(
+                    self.janela,
+                    "Sucesso",
+                    "Veículo atualizado com sucesso!"
+                )
 
-        else:
+            else:
 
-            veiculo = Veiculo(
-                cliente_id=cliente_id,
-                placa=placa,
-                marca=marca,
-                modelo=modelo,
-                ano=self.janela.spnAno.value(),
-                cor=self.janela.txtCor.text().strip(),
-                km=self.janela.spnKm.value(),
-                motor=self.janela.txtMotor.text().strip(),
-                combustivel=self.janela.cmbCombustivel.currentText()
-            )
+                veiculo = Veiculo(
+                    cliente_id=cliente_id,
+                    placa=placa,
+                    marca=marca,
+                    modelo=modelo,
+                    ano=self.janela.spnAno.value(),
+                    cor=self.janela.txtCor.text().strip(),
+                    km=self.janela.spnKm.value(),
+                    motor=self.janela.txtMotor.text().strip(),
+                    combustivel=self.janela.cmbCombustivel.currentText()
+                )
 
-            self.repository.inserir(
-                veiculo
-            )
+                self.repository.inserir(
+                    veiculo
+                )
 
-            QMessageBox.information(
-                self.janela,
-                "Sucesso",
-                "Veículo cadastrado com sucesso!"
-            )
+                QMessageBox.information(
+                    self.janela,
+                    "Sucesso",
+                    "Veículo cadastrado com sucesso!"
+                )
 
-        self.janela.accept()
+            self.janela.accept()
+
+        except sqlite3.IntegrityError as e:
+
+            if "veiculos.placa" in str(e):
+
+                QMessageBox.warning(
+                    self.janela,
+                    "Placa já cadastrada",
+                    "Já existe um veículo cadastrado com essa placa."
+                )
+
+            else:
+                raise
 
 
     def exec(self):

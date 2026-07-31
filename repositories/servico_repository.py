@@ -1,6 +1,6 @@
 from database.conexao import criar_conexao
 from models.servico import Servico
-
+from typing import List, Optional
 
 class ServicoRepository:
 
@@ -41,7 +41,7 @@ class ServicoRepository:
             conexao.close()
 
 
-    def listar(self) -> list[Servico]:
+    def listar(self) -> List[Servico]:
 
         conexao = criar_conexao()
 
@@ -69,7 +69,7 @@ class ServicoRepository:
             conexao.close()
 
 
-    def pesquisar(self, texto: str) -> list[Servico]:
+    def pesquisar(self, texto: str) -> List[Servico]:
 
         conexao = criar_conexao()
 
@@ -98,7 +98,7 @@ class ServicoRepository:
             conexao.close()
 
 
-    def buscar_por_id(self, id_servico: int) -> Servico | None:
+    def buscar_por_id(self, id_servico: int) -> Optional[Servico]:
 
         conexao = criar_conexao()
 

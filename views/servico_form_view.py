@@ -1,14 +1,14 @@
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QMessageBox
+from PySide2.QtUiTools import QUiLoader
+from PySide2.QtCore import QFile
+from PySide2.QtWidgets import QMessageBox
 from utils.recursos import caminho_recurso
 from models.servico import Servico
 from repositories.servico_repository import ServicoRepository
-
+from typing import Optional
 
 class ServicoFormView:
 
-    def __init__(self, servico: Servico | None = None):
+    def __init__(self, servico: Optional[Servico] = None):
 
         loader = QUiLoader()
 

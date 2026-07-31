@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication
+from PySide2.QtWidgets import QApplication
 
 from database.inicializar_banco import inicializar_banco
 from views.main_view import MainView
@@ -13,7 +13,7 @@ def main():
     janela = MainView()
     janela.show()
 
-    app.exec()
+    app.exec_()
 
 
 if __name__ == "__main__":

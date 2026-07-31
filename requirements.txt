@@ -1,2 +1,4 @@
-PySide6
-reportlab
+PySide2==5.15.2.1
+shiboken2==5.15.2.1
+reportlab==4.0.9
+Pillow==10.4.0
