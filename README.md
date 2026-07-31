@@ -2,16 +2,27 @@
 
 Sistema desktop para gerenciamento de oficinas mecânicas desenvolvido em Python.
 
-O EWE-AUTO foi desenvolvido para informatizar pequenas oficinas mecânicas, substituindo o controle manual em papel por um sistema simples, rápido e de baixo consumo de recursos.
+O **EWE-AUTO** foi criado para informatizar pequenas oficinas mecânicas, substituindo o controle manual em papel por um sistema simples, rápido, leve e totalmente offline.
 
-A aplicação permite gerenciar clientes, veículos, peças, serviços e ordens de serviço, além de gerar e imprimir documentos em PDF.
+O sistema permite gerenciar clientes, veículos, peças, serviços e ordens de serviço, além de gerar documentos em PDF para impressão.
 
+Atualmente o sistema encontra-se em utilização em ambiente real.
+
+---
+
+# Objetivos do Projeto
+
+- Desenvolver um sistema desktop leve para pequenas oficinas.
+- Compatibilidade com hardware antigo.
+- Funcionamento totalmente offline.
+- Baixo consumo de memória.
+- Fácil implantação e manutenção.
 ---
 
 # Tecnologias utilizadas
 
-- Python
-- PySide6
+- Python 3.8
+- PySide2
 - Qt Designer
 - SQLite
 - ReportLab
@@ -46,9 +57,9 @@ EWE-AUTO/
 
 # Arquitetura
 
-O projeto utiliza uma arquitetura em camadas (Layered Architecture) com aplicação do Repository Pattern.
+O projeto utiliza uma arquitetura em camadas (Layered Architecture), aplicando o Repository Pattern para desacoplamento da camada de persistência.
 
-As responsabilidades são separadas entre:
+As responsabilidades são divididas entre:
 
 - Interface gráfica (Views)
 - Modelos de domínio (Models)
@@ -62,60 +73,51 @@ As responsabilidades são separadas entre:
 
 ## Clientes
 
-- ✅ Cadastro
-- ✅ Pesquisa
-- ✅ Alteração
-- ✅ Exclusão
-
----
+- Cadastro
+- Pesquisa
+- Alteração
+- Exclusão
 
 ## Veículos
 
-- ✅ Cadastro
-- ✅ Associação ao cliente
-- ✅ Pesquisa
-- ✅ Alteração
-- ✅ Exclusão
-
----
+- Cadastro
+- Associação ao cliente
+- Pesquisa
+- Alteração
+- Exclusão
+- Validação de placa duplicada
 
 ## Serviços
 
-- ✅ Cadastro
-- ✅ Pesquisa
-- ✅ Alteração
-- ✅ Exclusão
-
----
+- Cadastro
+- Pesquisa
+- Alteração
+- Exclusão
 
 ## Peças
 
-- ✅ Cadastro
-- ✅ Pesquisa
-- ✅ Alteração
-- ✅ Exclusão
-
----
+- Cadastro
+- Pesquisa
+- Alteração
+- Exclusão
 
 ## Ordens de Serviço
 
-- ✅ Criação
-- ✅ Numeração automática
-- ✅ Associação Cliente / Veículo
-- ✅ Inclusão de peças
-- ✅ Inclusão de serviços
-- ✅ Cálculo automático dos valores
-- ✅ Alteração de status
-- ✅ Geração de PDF
-- ✅ Impressão
-
----
+- Criação
+- Numeração automática
+- Associação entre cliente e veículo
+- Inclusão de peças
+- Inclusão de serviços
+- Cálculo automático dos valores
+- Alteração de status
+- Geração de PDF
+- Impressão
 
 ## Configurações
 
-- ✅ Dados da oficina
-- ✅ Logo da empresa
-- ✅ Informações utilizadas nos PDFs
+- Dados da oficina
+- Logotipo da empresa
+- Informações utilizadas nos PDFs
 
 ---
 
@@ -123,28 +125,31 @@ As responsabilidades são separadas entre:
 
 - SQLite
 - Criação automática do banco
-- Inicialização automática do Schema
+- Inicialização automática do schema
 
 ---
 
 # Distribuição
 
-O sistema pode ser distribuído através de executável gerado pelo PyInstaller, não sendo necessária a instalação do Python na máquina do cliente.
+O sistema é distribuído através de executável gerado com PyInstaller.
+
+Não é necessária a instalação do Python na máquina do cliente.
 
 ---
 
 # Compatibilidade
 
+O sistema foi homologado em:
+
+- Windows 7 SP1 (64 bits)
 - Windows 10
 - Windows 11
-
-> Compatibilidade com Windows 7 em processo de validação.
 
 ---
 
 # Como executar
 
-## Ambiente virtual
+## Criar ambiente virtual
 
 ```bash
 python -m venv .venv
@@ -172,28 +177,58 @@ python main.py
 
 ---
 
+# Build
+
+Gerar o executável:
+
+```powershell
+pyinstaller .\EWE-AUTO.spec --clean --noconfirm
+```
+
+O executável será gerado na pasta:
+
+```text
+dist/
+```
+
+---
+
 # Roadmap
 
 ## v1.1
 
+- Instalador (Inno Setup)
+- Melhorias visuais
+- Manual do usuário
 - Backup automático
+- Melhorias de usabilidade
+
+## Futuro
+
 - Dashboard
 - Controle de estoque
-- Relatórios
+- Relatórios gerenciais
 - Pesquisa global
+- Atualizador do sistema
 
 ---
 
 # Status do Projeto
 
-✅ **Versão 1.0.0 concluída**
+**Versão atual:** 1.0.0
 
-Sistema funcional, utilizado em ambiente real e em evolução contínua.
+✅ Sistema implantado e em utilização em ambiente real.
+
+O projeto encontra-se em evolução contínua, recebendo melhorias com base no uso da oficina.
+
+---
+
+# Licença
+
+Projeto desenvolvido para fins de estudo, portfólio e utilização em ambiente real.
 
 ---
 
 # Autor
 
 **Vinicius dos Santos Bassio**
-
-Projeto desenvolvido para estudo, portfólio e utilização em ambiente real.
