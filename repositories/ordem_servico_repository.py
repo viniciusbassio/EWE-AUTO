@@ -1,6 +1,6 @@
 from database.conexao import criar_conexao
 from models.ordem_servico import OrdemServico
-
+from typing import List, Optional
 
 class OrdemServicoRepository:
 
@@ -87,7 +87,7 @@ class OrdemServicoRepository:
             conexao.close()
 
 
-    def listar(self) -> list[OrdemServico]:
+    def listar(self) -> List[OrdemServico]:
 
         conexao = criar_conexao()
 
@@ -118,7 +118,7 @@ class OrdemServicoRepository:
             conexao.close()
 
 
-    def buscar_por_id(self, id_os: int) -> OrdemServico | None:
+    def buscar_por_id(self, id_os: int) -> Optional[OrdemServico]:
 
         conexao = criar_conexao()
 
@@ -218,7 +218,7 @@ class OrdemServicoRepository:
         finally:
             conexao.close()
 
-    def pesquisar_ordens(self, texto: str) -> list[OrdemServico]:
+    def pesquisar_ordens(self, texto: str) -> List[OrdemServico]:
 
         conexao = criar_conexao()
     

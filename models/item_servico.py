@@ -1,3 +1,5 @@
+from typing import Optional
+
 class ItemServico:
 
     def __init__(
@@ -7,7 +9,7 @@ class ItemServico:
         quantidade: float = 1,
         valor_unitario: float = 0.0,
         valor_total: float = 0.0,
-        id_item_servico: int | None = None
+        id_item_servico: Optional[int] = None
     ):
 
         self.id_item_servico = id_item_servico

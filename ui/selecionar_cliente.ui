@@ -26,7 +26,7 @@
       <string>Selecionar Cliente</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
@@ -40,19 +40,19 @@
    <item>
     <widget class="QTableWidget" name="tblClientes">
      <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContentsOnFirstShow</enum>
+      <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
      </property>
      <property name="editTriggers">
-      <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+      <set>QAbstractItemView::NoEditTriggers</set>
      </property>
      <property name="alternatingRowColors">
       <bool>true</bool>
      </property>
      <property name="selectionMode">
-      <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+      <enum>QAbstractItemView::SingleSelection</enum>
      </property>
      <property name="selectionBehavior">
-      <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+      <enum>QAbstractItemView::SelectRows</enum>
      </property>
      <column>
       <property name="text">
@@ -81,7 +81,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
+        <enum>Qt::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>

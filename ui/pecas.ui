@@ -18,6 +18,25 @@
 
   <layout class="QVBoxLayout" name="verticalLayout">
 
+    <item>
+    <widget class="QLabel" name="lblVeiculos">
+        <property name="font">
+            <font>
+                <pointsize>20</pointsize>
+                <bold>true</bold>
+            </font>
+        </property>
+
+        <property name="alignment">
+            <set>Qt::AlignCenter</set>
+        </property>
+
+        <property name="text">
+            <string>Peças</string>
+        </property>
+    </widget>
+    </item>
+
    <!-- Pesquisa -->
    <item>
     <widget class="QLineEdit" name="txtPesquisar">

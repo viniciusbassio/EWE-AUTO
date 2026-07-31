@@ -1,6 +1,6 @@
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
-from PySide6.QtWidgets import (
+from PySide2.QtUiTools import QUiLoader
+from PySide2.QtCore import QFile
+from PySide2.QtWidgets import (
     QTableWidgetItem,
     QHeaderView,
     QMessageBox
@@ -88,16 +88,14 @@ class VeiculosView:
             7,
             QHeaderView.ResizeToContents
         )  # KM
-
         tabela.horizontalHeader().setSectionResizeMode(
-            8,
-            QHeaderView.ResizeToContents
-        )  # Motor
-
+                    8,
+                    QHeaderView.ResizeToContents
+                )
         tabela.horizontalHeader().setSectionResizeMode(
-            9,
-            QHeaderView.ResizeToContents
-        )  # Combustível
+                    9,
+                    QHeaderView.ResizeToContents
+                )
 
 
     def abrir_novo_veiculo(self):
@@ -115,6 +113,7 @@ class VeiculosView:
 
         veiculos = repository.listar()
 
+        
         self.preencher_tabela(veiculos)
 
 
@@ -220,7 +219,6 @@ class VeiculosView:
                     veiculo.combustivel or ""
                 )
             )
-
 
     def editar_veiculo(self):
 

@@ -1,6 +1,6 @@
 from database.conexao import criar_conexao
 from models.peca import Peca
-
+from typing import List, Optional
 
 class PecaRepository:
 
@@ -41,7 +41,7 @@ class PecaRepository:
             conexao.close()
 
 
-    def listar(self) -> list[Peca]:
+    def listar(self) -> List[Peca]:
 
         conexao = criar_conexao()
 
@@ -69,7 +69,7 @@ class PecaRepository:
             conexao.close()
 
 
-    def pesquisar(self, texto: str) -> list[Peca]:
+    def pesquisar(self, texto: str) -> List[Peca]:
 
         conexao = criar_conexao()
 
@@ -98,7 +98,7 @@ class PecaRepository:
             conexao.close()
 
 
-    def buscar_por_id(self, id_peca: int) -> Peca | None:
+    def buscar_por_id(self, id_peca: int) -> Optional[Peca]:
 
         conexao = criar_conexao()
 

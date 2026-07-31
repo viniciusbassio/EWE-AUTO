@@ -1,3 +1,5 @@
+from typing import Optional
+
 class Veiculo:
 
     def __init__(
@@ -6,13 +8,13 @@ class Veiculo:
         placa: str,
         marca: str,
         modelo: str,
-        ano: int | None = None,
+        ano: Optional[int] = None,
         cor: str = "",
         km: int = 0,
         motor: str = "",
         combustivel: str = "",
-        id_veiculo: int | None = None,
-        cliente: str | None = None
+        id_veiculo: Optional[int] = None,
+        cliente: Optional[str] = None
     ):
         self.id_veiculo = id_veiculo
         self.cliente_id = cliente_id

@@ -14,11 +14,29 @@
   </property>
 
   <property name="windowTitle">
-   <string>Veículos</string>
+   <string>Pesquisa de Veículos</string>
   </property>
 
   <layout class="QVBoxLayout" name="verticalLayout">
+    
+    <item>
+    <widget class="QLabel" name="lblVeiculos">
+        <property name="font">
+            <font>
+                <pointsize>20</pointsize>
+                <bold>true</bold>
+            </font>
+        </property>
 
+        <property name="alignment">
+            <set>Qt::AlignCenter</set>
+        </property>
+
+        <property name="text">
+            <string>Veículos</string>
+        </property>
+    </widget>
+    </item>
    <!-- Pesquisa -->
 
    <item>
@@ -94,6 +112,16 @@
      <column>
       <property name="text">
        <string>KM</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Motor</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Combustivel</string>
       </property>
      </column>
 

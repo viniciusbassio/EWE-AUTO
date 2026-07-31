@@ -1,7 +1,7 @@
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
-from PySide6.QtWidgets import QTableWidgetItem, QHeaderView
-from PySide6.QtWidgets import QMessageBox
+from PySide2.QtUiTools import QUiLoader
+from PySide2.QtCore import QFile
+from PySide2.QtWidgets import QTableWidgetItem, QHeaderView
+from PySide2.QtWidgets import QMessageBox
 from repositories.cliente_repository import ClienteRepository
 from views.cliente_form_view import ClienteFormView
 from utils.recursos import caminho_recurso

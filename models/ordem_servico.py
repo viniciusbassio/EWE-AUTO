@@ -1,3 +1,5 @@
+from typing import Optional
+
 class OrdemServico:
 
     def __init__(
@@ -7,7 +9,7 @@ class OrdemServico:
         veiculo_id: int,
         data_abertura: str,
         problema_relatado: str,
-        data_fechamento: str | None = None,
+        data_fechamento: Optional[str] = None,
         diagnostico: str = "",
         valor_mao_obra: float = 0.0,
         valor_pecas: float = 0.0,
@@ -15,7 +17,7 @@ class OrdemServico:
         forma_pagamento: str = "",
         status: str = "Aberta",
         observacoes: str = "",
-        id_os: int | None = None
+        id_os: Optional[int] = None
     ):
 
         self.id_os = id_os

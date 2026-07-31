@@ -1,3 +1,5 @@
+from typing import Optional
+
 class Cliente:
     def __init__(
         self,
@@ -6,7 +8,7 @@ class Cliente:
         cpf: str,
         endereco: str,
         observacoes: str = "",
-        id_cliente: int | None = None
+        id_cliente: Optional[int] = None
     ):
         self.id_cliente = id_cliente
         self.nome = nome
@@ -22,6 +24,6 @@ class Cliente:
             f"nome='{self.nome}', "
             f"telefone='{self.telefone}', "
             f"cpf='{self.cpf}', "
-            f"endereco='{self.endereco}')",
+            f"endereco='{self.endereco}', "
             f"observacoes='{self.observacoes}')"
         )

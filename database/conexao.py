@@ -10,7 +10,6 @@ def criar_conexao():
     """
     Cria e retorna uma conexão com o banco SQLite.
     """
-
     conexao = sqlite3.connect(BANCO_DADOS)
 
     # Ativa suporte a chaves estrangeiras no SQLite

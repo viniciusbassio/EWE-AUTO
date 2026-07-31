@@ -1,6 +1,6 @@
 from database.conexao import criar_conexao
 from models.veiculo import Veiculo
-
+from typing import List, Optional
 
 class VeiculoRepository:
 
@@ -61,7 +61,7 @@ class VeiculoRepository:
             conexao.close()
 
 
-    def listar(self) -> list[Veiculo]:
+    def listar(self) -> List[Veiculo]:
 
         conexao = criar_conexao()
 
@@ -98,7 +98,7 @@ class VeiculoRepository:
             conexao.close()
 
 
-    def pesquisar(self, texto: str) -> list[Veiculo]:
+    def pesquisar(self, texto: str) -> List[Veiculo]:
 
         conexao = criar_conexao()
 
@@ -136,7 +136,7 @@ class VeiculoRepository:
             conexao.close()
 
 
-    def buscar_por_id(self, id_veiculo: int) -> Veiculo | None:
+    def buscar_por_id(self, id_veiculo: int) -> Optional[Veiculo]:
 
         conexao = criar_conexao()
 
@@ -233,7 +233,7 @@ class VeiculoRepository:
         self,
         cliente_id: int,
         texto: str
-    ) -> list[Veiculo]:
+    ) -> List[Veiculo]:
 
         conexao = criar_conexao()
 
@@ -284,7 +284,7 @@ class VeiculoRepository:
             conexao.close()
 
 
-    def listar_por_cliente(self, cliente_id: int) -> list[Veiculo]:
+    def listar_por_cliente(self, cliente_id: int) -> List[Veiculo]:
 
         conexao = criar_conexao()
 

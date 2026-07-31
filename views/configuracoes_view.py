@@ -1,9 +1,9 @@
 import shutil
 from pathlib import Path
 from utils.recursos import caminho_recurso
-from PySide6.QtCore import QFile
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtWidgets import (
+from PySide2.QtCore import QFile
+from PySide2.QtUiTools import QUiLoader
+from PySide2.QtWidgets import (
     QFileDialog,
     QMessageBox
 )

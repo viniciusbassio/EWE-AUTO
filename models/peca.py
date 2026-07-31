@@ -1,3 +1,5 @@
+from typing import Optional
+
 class Peca:
 
     def __init__(
@@ -5,7 +7,7 @@ class Peca:
         descricao: str,
         marca: str = "",
         valor: float = 0.0,
-        id_peca: int | None = None
+        id_peca: Optional[int] = None
     ):
         self.id_peca = id_peca
         self.descricao = descricao

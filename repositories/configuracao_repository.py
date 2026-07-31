@@ -1,10 +1,10 @@
 from database.conexao import criar_conexao
 from models.configuracao import Configuracao
-
+from typing import Optional
 
 class ConfiguracaoRepository:
 
-    def buscar(self) -> Configuracao | None:
+    def buscar(self) -> Optional[Configuracao]:
 
         conexao = criar_conexao()
 

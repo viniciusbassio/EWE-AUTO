@@ -436,15 +436,11 @@ class OrdemServicoPDF:
                     self.estilo_normal
                 ),
                 Paragraph(
-                    (
-                        f"<b>Endereço:</b> "
-                        f"{getattr(
-                            cliente,
-                            'endereco',
-                            ''
-                        ) or ''}"
-                    ),
-                    self.estilo_normal
+                (
+                    f"<b>Endereço:</b> "
+                    f"{getattr(cliente, 'endereco', '') or ''}"
+                ),
+                self.estilo_normal
                 )
             ]
         ]
@@ -560,11 +556,7 @@ class OrdemServicoPDF:
                 Paragraph(
                     (
                         f"<b>KM:</b> "
-                        f"{getattr(
-                            veiculo,
-                            'km',
-                            ''
-                        ) or ''}"
+                        f"{getattr(veiculo, 'km', '') or ''}"
                     ),
                     self.estilo_normal
                 )
